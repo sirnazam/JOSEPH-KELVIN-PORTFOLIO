@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Facebook, Instagram, Music, Heart, Mail } from 'lucide-react'
+import { Code, ExternalLink, Heart, Mail } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const socials = [
-    { icon: Github, url: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, url: 'https://www.linkedin.com/in/joseph-kelvin-b8822639a/', label: 'LinkedIn' },
-    { icon: Facebook, url: 'https://facebook.com', label: 'Facebook' },
-    { icon: Instagram, url: 'https://instagram.com', label: 'Instagram' },
-    { icon: Music, url: 'https://tiktok.com', label: 'TikTok' },
+    { icon: Code, url: 'https://github.com', label: 'GitHub' },
+    { icon: ExternalLink, url: 'https://www.linkedin.com/in/joseph-kelvin-b8822639a/', label: 'LinkedIn' },
+    { icon: ExternalLink, url: 'https://facebook.com', label: 'Facebook' },
+    { icon: ExternalLink, url: 'https://instagram.com', label: 'Instagram' },
+    { icon: ExternalLink, url: 'https://tiktok.com', label: 'TikTok' },
   ]
 
   return (
