@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, Send, Github, Linkedin, Facebook, Instagram, Music } from 'lucide-react'
+import { Mail, Phone, Send, Code, ExternalLink, Music } from 'lucide-react'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -24,10 +24,10 @@ export default function Contact() {
   }
 
   const socials = [
-    { icon: Github, url: 'https://github.com', label: 'GitHub', color: 'hover:text-gray-300' },
-    { icon: Linkedin, url: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-blue-500' },
-    { icon: Facebook, url: 'https://facebook.com', label: 'Facebook', color: 'hover:text-blue-600' },
-    { icon: Instagram, url: 'https://instagram.com', label: 'Instagram', color: 'hover:text-pink-500' },
+    { icon: Code, url: 'https://github.com', label: 'GitHub', color: 'hover:text-gray-300' },
+    { icon: ExternalLink, url: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-blue-500' },
+    { icon: ExternalLink, url: 'https://facebook.com', label: 'Facebook', color: 'hover:text-blue-600' },
+    { icon: ExternalLink, url: 'https://instagram.com', label: 'Instagram', color: 'hover:text-pink-500' },
     { icon: Music, url: 'https://tiktok.com', label: 'TikTok', color: 'hover:text-black dark:hover:text-white' },
   ]
 

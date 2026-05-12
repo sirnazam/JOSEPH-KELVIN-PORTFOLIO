@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Code } from 'lucide-react'
 
 export default function Projects() {
   const projects = [
@@ -121,7 +121,7 @@ export default function Projects() {
                       whileTap={{ scale: 0.95 }}
                       className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 transition-colors"
                     >
-                      <Github size={16} />
+                      <Code size={16} />
                       GitHub
                     </motion.button>
                   </div>
