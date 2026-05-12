@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Modern portfolio website for Joseph Chukwunazam Kelvin - Frontend Developer, Graphic Designer, Tech Enthusiast" />
+    <title>Joseph Chukwunazam Kelvin | Frontend Developer & Designer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Feather Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons@4.29.0/dist/feather.min.css">
+    
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #0a0e27;
+            color: white;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0f1339;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #818cf8;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-button {
+            background: linear-gradient(to right, #3b82f6, #a855f7, #ec4899);
+        }
+        
+        .gradient-button:hover {
+            background: linear-gradient(to right, #2563eb, #9333ea, #db2777);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.6s ease-out forwards;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 glass-effect border-b border-white/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-2xl font-bold gradient-text">JCK</div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex gap-8">
+                    <a href="#home" class="text-sm font-medium hover:text-purple-400 transition-colors">Home</a>
+                    <a href="#about" class="text-sm font-medium hover:text-purple-400 transition-colors">About</a>
+                    <a href="#skills" class="text-sm font-medium hover:text-purple-400 transition-colors">Skills</a>
+                    <a href="#projects" class="text-sm font-medium hover:text-purple-400 transition-colors">Projects</a>
+                    <a href="#resume" class="text-sm font-medium hover:text-purple-400 transition-colors">Resume</a>
+                    <a href="#contact" class="text-sm font-medium hover:text-purple-400 transition-colors">Contact</a>
+                </div>
+                
+                <a href="#contact" class="hidden md:block px-6 py-2 gradient-button text-white rounded-lg font-medium text-sm">
+                    Get In Touch
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden fixed top-16 left-0 right-0 bg-gray-800 z-40 md:hidden">
+        <div class="p-4 space-y-4">
+            <a href="#home" class="block text-sm font-medium text-white hover:text-purple-400" onclick="closeMobileMenu()">Home</a>
+            <a href="#about" class="block text-sm font-medium text-white hover:text-purple-400" onclick="closeMobileMenu()">About</a>
+            <a href="#skills" class="block text-sm font-medium text-white hover:text-purple-400" onclick="closeMobileMenu()">Skills</a>
+            <a href="#projects" class="block text-sm font-medium text-white hover:text-purple-400" onclick="closeMobileMenu()">Projects</a>
+            <a href="#resume" class="block text-sm font-medium text-white hover:text-purple-400" onclick="closeMobileMenu()">Resume</a>
+            <a href="#contact" class="block w-full px-4 py-2 gradient-button text-white rounded-lg font-medium text-center" onclick="closeMobileMenu()">Contact</a>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-10 px-4 md:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl opacity-10"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-10"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto text-center fade-in-up">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                <span class="gradient-text">Joseph Chukwunazam</span> <br />
+                <span class="text-white">Kelvin</span>
+            </h1>
+            
+            <h2 class="text-2xl md:text-3xl font-semibold text-purple-300 mb-6">
+                Frontend Developer | Graphic Designer | Tech Enthusiast
+            </h2>
+            
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+                I create modern digital experiences, branding solutions, and creative digital products that help businesses and individuals stand out. Let's build something amazing together.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center mt-10">
+                <a href="#projects" class="px-8 py-4 gradient-button text-white rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all">
+                    View My Work
+                    <i data-feather="arrow-right" width="20"></i>
+                </a>
+                <a href="#contact" class="px-8 py-4 border-2 border-purple-500 text-purple-400 rounded-lg font-semibold hover:bg-purple-500/10 transition-colors">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 md:px-8 bg-gray-800/50">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="section-title text-center">About Me</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-stretch">
+                    <div class="glass-effect rounded-2xl p-8 flex items-center justify-center">
+                <img
+                    src="images/kelvin.png"
+                    alt="Joseph Chukwunazam Kelvin"
+                    style="width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 12px; transform: scaleX(-1);"
+                />
+                </div>
+                
+                <div class="slide-in-left">
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        I am a frontend developer and digital creator passionate about technology, branding, web development, and creative digital solutions. I enjoy building user-friendly websites, business branding materials, and modern digital experiences that solve real-world problems.
+                    </p>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        I am currently learning backend development while also exploring AI/ML and 3D animation as future growth areas. My long-term vision is to build innovative technology products and creative digital solutions for Africa and beyond.
+                    </p>
+                    
+                    <div class="space-y-3 mt-8">
+                        <p class="flex items-center gap-3 text-gray-300">
+                            <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></span>
+                            Creative thinker with a passion for design and technology
+                        </p>
+                        <p class="flex items-center gap-3 text-gray-300">
+                            <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></span>
+                            Focused on building beautiful, functional digital products
+                        </p>
+                        <p class="flex items-center gap-3 text-gray-300">
+                            <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></span>
+                            Driven by innovation and continuous learning
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Elevator Pitch Section -->
+    <section id="pitch" class="py-20 px-4 md:px-8">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="section-title text-center">Elevator Pitch</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="slide-in-left">
+                    <p class="text-2xl md:text-3xl font-semibold text-white leading-relaxed mb-6">
+                        I help <span class="gradient-text">businesses, brands, and individuals</span> build modern digital experiences through design, branding, and web development.
+                    </p>
+                    
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Whether you need a stunning website, professional branding solutions, or a modern web application, I combine creativity and technical expertise to deliver exceptional results that exceed expectations.
+                    </p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 flex items-center justify-center aspect-video">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="play" class="text-white" width="40" height="40" style="fill: white;"></i>
+                        </div>
+                        <p class="text-sm text-gray-400">Coming Soon: Elevator Pitch Video</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 md:px-8 bg-gray-800/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-center">Skills & Expertise</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Development -->
+                <div class="glass-effect rounded-2xl p-8 fade-in-up">
+                    <h3 class="text-2xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+                        Development
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">HTML</span>
+                                <span class="text-xs text-purple-400 font-semibold">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">CSS</span>
+                                <span class="text-xs text-purple-400 font-semibold">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">JavaScript</span>
+                                <span class="text-xs text-purple-400 font-semibold">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Frontend Development</span>
+                                <span class="text-xs text-purple-400 font-semibold">88%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Flutter</span>
+                                <span class="text-xs text-purple-400 font-semibold">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Backend Development (Learning)</span>
+                                <span class="text-xs text-purple-400 font-semibold">40%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-blue-500 to-blue-600 w-40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Design & Media -->
+                <div class="glass-effect rounded-2xl p-8 fade-in-up" style="animation-delay: 0.1s;">
+                    <h3 class="text-2xl font-bold mb-8 bg-gradient-to-r from-purple-500 to-purple-600 bg-clip-text text-transparent">
+                        Design & Media
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Graphic Design</span>
+                                <span class="text-xs text-purple-400 font-semibold">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-purple-600 w-85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Branding</span>
+                                <span class="text-xs text-purple-400 font-semibold">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-purple-600 w-80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Adobe Photoshop</span>
+                                <span class="text-xs text-purple-400 font-semibold">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-purple-600 w-85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Adobe Premiere Pro</span>
+                                <span class="text-xs text-purple-400 font-semibold">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-purple-600 w-80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Adobe After Effects</span>
+                                <span class="text-xs text-purple-400 font-semibold">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-purple-600 w-75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Microsoft Office Suite</span>
+                                <span class="text-xs text-purple-400 font-semibold">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-purple-500 to-purple-600 w-90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Emerging Technologies -->
+                <div class="glass-effect rounded-2xl p-8 fade-in-up" style="animation-delay: 0.2s;">
+                    <h3 class="text-2xl font-bold mb-8 bg-gradient-to-r from-pink-500 to-pink-600 bg-clip-text text-transparent">
+                        Emerging Technologies
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">AI/ML Fundamentals</span>
+                                <span class="text-xs text-purple-400 font-semibold">45%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-pink-500 to-pink-600 w-45%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">3D Animation Fundamentals</span>
+                                <span class="text-xs text-purple-400 font-semibold">50%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-pink-500 to-pink-600 w-50%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Blender</span>
+                                <span class="text-xs text-purple-400 font-semibold">40%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-pink-500 to-pink-600 w-40%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">SaaS Product Development</span>
+                                <span class="text-xs text-purple-400 font-semibold">60%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-pink-500 to-pink-600 w-60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Virtual Assistant -->
+                <div class="glass-effect rounded-2xl p-8 fade-in-up" style="animation-delay: 0.3s;">
+                    <h3 class="text-2xl font-bold mb-8 bg-gradient-to-r from-teal-500 to-teal-600 bg-clip-text text-transparent">
+                        Virtual Assistant
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Calendar & Email Management</span>
+                                <span class="text-xs text-purple-400 font-semibold">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 w-90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Data Entry & Research</span>
+                                <span class="text-xs text-purple-400 font-semibold">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 w-85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Project Management Tools</span>
+                                <span class="text-xs text-purple-400 font-semibold">88%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 w-88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Customer Support & Communication</span>
+                                <span class="text-xs text-purple-400 font-semibold">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 w-85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Document & Report Preparation</span>
+                                <span class="text-xs text-purple-400 font-semibold">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 w-90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-300 font-medium">Social Media Management</span>
+                                <span class="text-xs text-purple-400 font-semibold">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 w-80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-center">Featured Projects</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-effect rounded-2xl overflow-hidden group hover:shadow-lg transition-all fade-in-up">
+                    <div class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                        <div class="text-4xl">📱</div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">PLANGO</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            A modern SaaS productivity and task management platform being developed with Flutter and Supabase.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold">Flutter</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold">Supabase</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold">Mobile</span>
+                        </div>
+                        
+                        <div class="flex gap-3">
+                            <button class="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 transition-colors">
+                                <i data-feather="external-link" width="16"></i>
+                                Live Demo
+                            </button>
+                            <button class="flex-1 px-4 py-2 gradient-button text-white rounded-lg font-medium flex items-center justify-center gap-2">
+                                <i data-feather="github" width="16"></i>
+                                GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="glass-effect rounded-2xl overflow-hidden group hover:shadow-lg transition-all fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                        <div class="text-4xl">🎨</div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Business Branding Designs</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Professional branding, logo designs, company profiles, and promotional graphics for businesses and organizations.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold">Branding</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold">Design</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold">Photoshop</span>
+                        </div>
+                        
+                        <div class="flex gap-3">
+                            <button class="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 transition-colors">
+                                <i data-feather="external-link" width="16"></i>
+                                Live Demo
+                            </button>
+                            <button class="flex-1 px-4 py-2 gradient-button text-white rounded-lg font-medium flex items-center justify-center gap-2">
+                                <i data-feather="github" width="16"></i>
+                                GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="glass-effect rounded-2xl overflow-hidden group hover:shadow-lg transition-all fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                        <div class="text-4xl">🎬</div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Video Editing Projects</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            Creative video editing, motion graphics, and social media content creation using Adobe Premiere Pro and After Effects.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold">Video Editing</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold">Motion Graphics</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold">Content</span>
+                        </div>
+                        
+                        <div class="flex gap-3">
+                            <button class="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 transition-colors">
+                                <i data-feather="external-link" width="16"></i>
+                                Live Demo
+                            </button>
+                            <button class="flex-1 px-4 py-2 gradient-button text-white rounded-lg font-medium flex items-center justify-center gap-2">
+                                <i data-feather="github" width="16"></i>
+                                GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="glass-effect rounded-2xl overflow-hidden group hover:shadow-lg transition-all fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                        <div class="text-4xl">💡</div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Future Creative Platform Vision</h3>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                            A future creative technology platform idea focused on empowering creators and businesses with innovative digital tools.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold">SaaS</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold">Creative Tools</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-semibold">Innovation</span>
+                        </div>
+                        
+                        <div class="flex gap-3">
+                            <button class="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 transition-colors">
+                                <i data-feather="external-link" width="16"></i>
+                                Live Demo
+                            </button>
+                            <button class="flex-1 px-4 py-2 gradient-button text-white rounded-lg font-medium flex items-center justify-center gap-2">
+                                <i data-feather="github" width="16"></i>
+                                GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-20 px-4 md:px-8 bg-gray-800/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title text-center">What People Say</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass-effect rounded-2xl p-8 fade-in-up">
+                    <div class="flex gap-1 mb-4">
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                    </div>
+                    
+                    <p class="text-gray-300 mb-6 leading-relaxed italic">
+                        "Joseph delivers clean and professional digital solutions that exceed expectations."
+                    </p>
+                    
+                    <div class="flex items-center gap-4 pt-6 border-t border-white/10">
+                        <div class="text-3xl">👨‍💼</div>
+                        <div>
+                            <p class="text-white font-semibold">Client Name</p>
+                            <p class="text-gray-400 text-sm">Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="glass-effect rounded-2xl p-8 fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="flex gap-1 mb-4">
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                    </div>
+                    
+                    <p class="text-gray-300 mb-6 leading-relaxed italic">
+                        "Creative, innovative, and highly passionate about technology. A true professional."
+                    </p>
+                    
+                    <div class="flex items-center gap-4 pt-6 border-t border-white/10">
+                        <div class="text-3xl">👩‍💼</div>
+                        <div>
+                            <p class="text-white font-semibold">Team Member</p>
+                            <p class="text-gray-400 text-sm">Project Manager</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="glass-effect rounded-2xl p-8 fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="flex gap-1 mb-4">
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                        <i data-feather="star" class="fill-yellow-400 text-yellow-400" width="16"></i>
+                    </div>
+                    
+                    <p class="text-gray-300 mb-6 leading-relaxed italic">
+                        "Strong design sense combined with modern development skills. Highly recommended."
+                    </p>
+                    
+                    <div class="flex items-center gap-4 pt-6 border-t border-white/10">
+                        <div class="text-3xl">👨‍🎨</div>
+                        <div>
+                            <p class="text-white font-semibold">Collaborator</p>
+                            <p class="text-gray-400 text-sm">Creative Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title text-center">Resume</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Resume Preview -->
+                <div class="glass-effect rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-white mb-6">Professional Summary</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-2">Frontend Developer</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Experienced in building modern, responsive web applications using HTML, CSS, JavaScript, and React. Focused on creating intuitive user experiences and clean, maintainable code.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-2">Graphic Designer & Branding Specialist</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Proficient in Adobe Creative Suite (Photoshop, Premiere Pro, After Effects) with expertise in logo design, brand identity, and visual content creation.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-2">Digital Creator</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Creating engaging digital content, from video production to social media graphics, combining creativity with modern design principles.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-purple-400 font-semibold mb-2">Current Focus</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Learning backend development, exploring AI/ML fundamentals, and diving into 3D animation as areas for professional growth.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Download CTA -->
+                <div class="flex flex-col justify-between">
+                    <div class="glass-effect rounded-2xl p-8 text-center mb-6">
+                        <div class="text-6xl mb-4">📄</div>
+                        <p class="text-gray-300 font-semibold">CV Document</p>
+                    </div>
+                    
+                    <button class="w-full px-6 py-4 gradient-button text-white rounded-xl font-semibold flex items-center justify-center gap-3 mb-4">
+                        <i data-feather="download" width="20"></i>
+                        Download CV
+                    </button>
+                    
+                    <div class="glass-effect rounded-xl p-4 text-center">
+                        <p class="text-sm text-gray-400">
+                            For detailed information about my experience, education, and certifications, please download my CV.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 md:px-8 bg-gray-800/50">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="section-title text-center">Contact Me</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Get In Touch</h3>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        I'm always interested in hearing about new opportunities and projects. Feel free to reach out using any of the methods below.
+                    </p>
+                    
+                    <!-- Email -->
+                    <a href="mailto:kelvinjoseph1440@gmail.com" class="flex items-center gap-4 p-4 glass-effect rounded-lg hover:border-purple-500/50 transition-colors group mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                            <i data-feather="mail" class="text-white" width="20"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-400">Email</p>
+                            <p class="text-white font-semibold">kelvinjoseph1440@gmail.com</p>
+                        </div>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/2348157983691" target="_blank" class="flex items-center gap-4 p-4 glass-effect rounded-lg hover:border-green-500/50 transition-colors group mb-8">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
+                            <i data-feather="phone" class="text-white" width="20"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-400">WhatsApp</p>
+                            <p class="text-white font-semibold">+234 815 798 3691</p>
+                        </div>
+                    </a>
+                    
+                    <!-- Social Links -->
+                    <div>
+                        <p class="text-gray-400 text-sm mb-4">Follow Me On</p>
+                        <div class="flex gap-4 flex-wrap">
+                            <a href="https://github.com/sirnazam" target="_blank" class="w-12 h-12 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-gray-300 transition-colors">
+                                <i data-feather="github" width="20"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/joseph-kelvin-b8822639a/" target="_blank" class="w-12 h-12 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-blue-500 transition-colors">
+                                <i data-feather="linkedin" width="20"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" class="w-12 h-12 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-blue-600 transition-colors">
+                                <i data-feather="facebook" width="20"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="w-12 h-12 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-pink-500 transition-colors">
+                                <i data-feather="instagram" width="20"></i>
+                            </a>
+                            <a href="https://tiktok.com" target="_blank" class="w-12 h-12 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+                                <i data-feather="music" width="20"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <form class="glass-effect rounded-2xl p-8" onsubmit="handleFormSubmit(event)">
+                    <div class="mb-6">
+                        <label class="block text-white font-semibold mb-2">Name</label>
+                        <input type="text" name="name" required class="w-full px-4 py-3 bg-gray-700 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors" placeholder="Your Name" />
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-white font-semibold mb-2">Email</label>
+                        <input type="email" name="email" required class="w-full px-4 py-3 bg-gray-700 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors" placeholder="your.email@example.com" />
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-white font-semibold mb-2">Message</label>
+                        <textarea name="message" required rows="5" class="w-full px-4 py-3 bg-gray-700 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors resize-none" placeholder="Your message here..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full px-6 py-3 gradient-button text-white rounded-lg font-semibold flex items-center justify-center gap-2">
+                        <i data-feather="send" width="18"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-white/10 py-12 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-2">Joseph Chukwunazam Kelvin</h3>
+                    <p class="text-gray-400 text-sm">Frontend Developer | Graphic Designer | Tech Enthusiast</p>
+                    <p class="text-gray-500 text-xs mt-2 italic">"Built with passion, creativity, and technology."</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-purple-400 transition-colors text-sm">About</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-purple-400 transition-colors text-sm">Skills</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-purple-400 transition-colors text-sm">Projects</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-purple-400 transition-colors text-sm">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Social Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Follow Me</h4>
+                    <div class="flex gap-3 flex-wrap">
+                        <a href="https://github.com/sirnazam" target="_blank" class="w-10 h-10 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-gray-300 transition-colors">
+                            <i data-feather="github" width="18"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/joseph-kelvin-b8822639a/" target="_blank" class="w-10 h-10 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-blue-500 transition-colors">
+                            <i data-feather="linkedin" width="18"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-blue-600 transition-colors">
+                            <i data-feather="facebook" width="18"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-pink-500 transition-colors">
+                            <i data-feather="instagram" width="18"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" class="w-10 h-10 rounded-lg glass-effect flex items-center justify-center text-gray-400 hover:text-white transition-colors">
+                            <i data-feather="music" width="18"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 my-8"></div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-gray-400 text-sm">
+                    © 2026 Joseph Chukwunazam Kelvin. Made with ❤️. All rights reserved.
+                </p>
+                <p class="text-gray-500 text-xs mt-4 md:mt-0">
+                    Designed & Developed by Joseph Chukwunazam Kelvin
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Feather Icons Script -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.0/dist/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+    
+    <!-- Mobile Menu Functions -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.add('hidden');
+        }
+        
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const name = form.name.value;
+            const email = form.email.value;
+            const message = form.message.value;
+            
+            // You can integrate with a backend or email service here
+            console.log('Form submitted:', { name, email, message });
+            
+            alert('Thank you for your message! I will get back to you soon.');
+            form.reset();
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
